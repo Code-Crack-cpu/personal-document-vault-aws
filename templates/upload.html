@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}Upload document{% endblock %}
+{% block content %}
+<div class="narrow-content"><span class="eyebrow">ADD TO YOUR VAULT</span><h1>Upload a document</h1><p class="muted intro-copy">Files are stored privately and securely in Amazon S3.</p>
+<form class="panel upload-form" method="post" enctype="multipart/form-data"><label>Document name<input type="text" name="name" placeholder="e.g. Passport copy" required></label><label>Category<select name="category" required><option value="">Choose a category</option><option>Identity</option><option>Finance</option><option>Home</option><option>Health</option><option>Education</option><option>Other</option></select></label><label>File<span class="drop-zone"><input id="file" type="file" name="file" accept=".pdf,.jpg,.jpeg,.png" required><strong>Choose a file</strong><small id="file-name">PDF, JPG, JPEG or PNG · Maximum 10 MB</small></span></label><div class="form-actions"><a class="button button-secondary" href="{{ url_for('documents.documents') }}">Cancel</a><button class="button" type="submit">Upload securely</button></div></form></div>
+{% endblock %}

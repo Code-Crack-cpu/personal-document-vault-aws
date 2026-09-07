@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="heading-row">
+  <div><span class="eyebrow">YOUR OVERVIEW</span><h1>Good to see you, {{ session.get('user_name') }}.</h1></div>
+  <a class="button" href="{{ url_for('documents.upload') }}">＋ Upload document</a>
+</div>
+<section class="stats-grid">
+  <div class="stat-card"><span class="stat-label">Total documents</span><strong>{{ total_documents }}</strong><span class="stat-note">In your vault</span></div>
+  <div class="stat-card accent"><span class="stat-label">Categories</span><strong>{{ categories|length }}</strong><span class="stat-note">Organised your way</span></div>
+  <div class="stat-card"><span class="stat-label">Storage</span><strong>Private</strong><span class="stat-note">Protected in Amazon S3</span></div>
+</section>
+<section class="dashboard-grid">
+  <div class="panel"><div class="panel-heading"><h2>Recent uploads</h2><a href="{{ url_for('documents.documents') }}">View all</a></div>
+    {% if recent %}
+    <div class="recent-list">{% for document in recent %}<div class="recent-item"><span class="file-icon">▧</span><div><strong>{{ document.name }}</strong><small>{{ document.category }} · {{ document.created_at.strftime('%d %b %Y') }}</small></div></div>{% endfor %}</div>
+    {% else %}<div class="empty"><p>Your vault is ready.</p><a href="{{ url_for('documents.upload') }}">Upload your first document</a></div>{% endif %}
+  </div>
+  <div class="panel"><div class="panel-heading"><h2>By category</h2></div>
+    {% if categories %}<div class="category-list">{% for item in categories %}<div class="category-row"><span>{{ item.category }}</span><strong>{{ item.total }}</strong></div>{% endfor %}</div>{% else %}<div class="empty"><p>Categories will appear here as you upload.</p></div>{% endif %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Create account{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-intro">
+    <span class="eyebrow">A CALMER WAY TO STORE</span>
+    <h1>Build your<br><em>personal vault.</em></h1>
+    <p>Register once, then upload and find your essential documents whenever you need them.</p>
+  </div>
+  <div class="auth-card">
+    <h2>Create account</h2>
+    <p class="muted">Start your secure document vault.</p>
+    <form method="post">
+      <label>Full name<input type="text" name="name" required autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>Password <small>(8+ characters)</small><input type="password" name="password" minlength="8" required autocomplete="new-password"></label>
+      <button class="button button-wide" type="submit">Create account</button>
+    </form>
+    <p class="form-footer">Already registered? <a href="{{ url_for('auth.login') }}">Sign in</a></p>
+  </div>
+</section>
+{% endblock %}

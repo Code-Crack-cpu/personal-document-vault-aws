@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<section class="auth-layout">
+  <div class="auth-intro">
+    <span class="eyebrow">PRIVATE BY DESIGN</span>
+    <h1>Your documents,<br><em>securely organised.</em></h1>
+    <p>Keep important personal files in one private, accessible place. Your files stay in your private cloud storage.</p>
+  </div>
+  <div class="auth-card">
+    <h2>Welcome back</h2>
+    <p class="muted">Sign in to access your vault.</p>
+    <form method="post">
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>Password<input type="password" name="password" required autocomplete="current-password"></label>
+      <button class="button button-wide" type="submit">Sign in</button>
+    </form>
+    <p class="form-footer">New here? <a href="{{ url_for('auth.register') }}">Create an account</a></p>
+  </div>
+</section>
+{% endblock %}
